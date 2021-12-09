@@ -3,7 +3,7 @@ import { Form, Input, Button, Checkbox } from 'antd';
 import { UserAddOutlined } from '@ant-design/icons';
 import SocialNetworks from './SocialNetworks';
 import { Typography } from 'antd';
-import { Row, Col, Divider } from 'antd';
+import { Row, Col } from 'antd';
 const { Title } = Typography;
 
 export default function SignUp() {
@@ -25,7 +25,7 @@ export default function SignUp() {
                 autoComplete="off"
             >
 
-                <Title level={2}>Create Account</Title>
+                <Title level={2} className="text-center">Create Account</Title>
                 <SocialNetworks />
 
                 <div className="option-text">or use your email for registration</div>

@@ -26,7 +26,7 @@ export default function SignIn() {
                 onFinishFailed={onFinishFailed}
                 autoComplete="off"
             >
-                <Title level={2}>Sign in</Title>
+                <Title level={2} className="text-center">Sign in</Title>
                 <SocialNetworks />
 
                 <div className="option-text">or use your account</div>
@@ -80,7 +80,7 @@ export default function SignIn() {
 
 
                 <Button type="primary" htmlType="submit" shape="round" icon={<LoginOutlined />} size="large">
-                    Submit
+                    Sign In
                 </Button>
             </Form>
         </>
