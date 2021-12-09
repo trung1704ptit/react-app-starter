@@ -39,14 +39,14 @@ export default function Auth() {
                             <h1>Welcome!</h1>
                             <p>If you already have an account with us please log in at the login page</p>
                             <Button shape="round" onClick={handleClickSignIn} icon={<SelectOutlined />} size="large">
-                                Sign In
+                                Have an account
                             </Button>
                         </div>
                         <div className="overlay-panel overlay-right bg-gradient">
                             <h1>Hello, Friend!</h1>
                             <p>Enter your personal details and start journey with us</p>
                             <Button shape="round" onClick={handleClickSignUp} icon={<SelectOutlined />} size="large">
-                                Sign Up
+                                Create new one
                             </Button>
                         </div>
                     </div>

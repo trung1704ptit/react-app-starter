@@ -34,6 +34,9 @@ export default function SignIn() {
                 <Form.Item
                     name="email"
                     hasFeedback
+                    label="Email address"
+                    labelCol={{ span: 24 }}
+                    wrapperCol={{ spane: 24 }}
                     rules={[
                         {
                             required: true,
@@ -51,12 +54,15 @@ export default function SignIn() {
                 <Form.Item
                     name="password"
                     hasFeedback
+                    label="Password"
+                    labelCol={{ span: 24 }}
+                    wrapperCol={{ spane: 24 }}
                     rules={[
                         {
                             required: true,
                             message: 'Please input your password.',
                         },
-                        { min: 5, message: 'Password must be minimum 6 characters.' },
+                        { min: 6, message: 'Password must be minimum 6 characters.' },
                     ]}
                 >
                     <Input.Password placeholder='Password' size="large" />
