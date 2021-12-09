@@ -1,9 +1,9 @@
 import './App.css';
-import SignIn from './pages/SignIn';
+import Auth from './pages/Auth';
 
 function App() {
   return (
-    <SignIn />
+    <Auth />
   );
 }
 
