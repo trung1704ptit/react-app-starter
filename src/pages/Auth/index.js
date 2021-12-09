@@ -2,13 +2,10 @@ import React, { useState } from 'react';
 import { Button } from 'antd';
 import { SelectOutlined } from '@ant-design/icons';
 import { Helmet } from "react-helmet";
-import { Typography } from 'antd';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 
-import './style.css';
-
-const { Title } = Typography;
+import './style.less';
 
 export default function Auth() {
     const [isPanelRightActive, setIsPanelRightActive] = useState(false);
