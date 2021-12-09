@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Button } from 'antd';
+import { SelectOutlined } from '@ant-design/icons';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 
@@ -28,14 +30,18 @@ export default function Auth() {
                 <div className="overlay-container">
                     <div className="overlay">
                         <div className="overlay-panel overlay-left bg-gradient">
-                            <h1>Welcome Back!</h1>
-                            <p>To keep connected with us please login with your personal info</p>
-                            <button className="ghost" id="signIn" onClick={handleClickSignIn}>Sign In</button>
+                            <h1>Welcome!</h1>
+                            <p>If you already have an account with us please log in at the login page</p>
+                            <Button shape="round" onClick={handleClickSignIn} icon={ <SelectOutlined />} size="large">
+                                Sign In
+                            </Button>
                         </div>
                         <div className="overlay-panel overlay-right bg-gradient">
                             <h1>Hello, Friend!</h1>
                             <p>Enter your personal details and start journey with us</p>
-                            <button className="ghost" id="signUp" onClick={handleClickSignUp}>Sign Up</button>
+                            <Button shape="round" onClick={handleClickSignUp} icon={<SelectOutlined />} size="large">
+                                Sign Up
+                            </Button>
                         </div>
                     </div>
                 </div>

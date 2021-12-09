@@ -14,16 +14,18 @@ p {
     margin: 20px 0 30px;
 }
 
-span {
-    font-size: 12px;
+.option-text {
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 10px;
 }
 
-a {
+/* a {
     color: #333;
     font-size: 14px;
     text-decoration: none;
     margin: 15px 0;
-}
+} */
 
 a:hover {
     color: var(--main-color);
@@ -37,45 +39,73 @@ a:hover {
     overflow: hidden;
     width: 768px;
     max-width: 100%;
-    min-height: 480px;
+    min-height: 600px;
 }
 
 .form-container form {
-    background: #fff;
+    /* background: #fff;
     display: flex;
     flex-direction: column;
     padding: 0 50px;
     height: 100%;
     justify-content: center;
     align-items: center;
+    text-align: center; */
+    background: #fff;
+    padding: 50px;
+    height: 100%;
+}
+
+.form-container form h1 {
+    color: #000;
     text-align: center;
 }
 
-.social-container {
-    margin: 20px 0;
-}
-
-.social-container a {
+.social-container .social {
     border: 1px solid #ddd;
     border-radius: 50%;
     display: inline-flex;
     justify-content: center;
     align-items: center;
-    margin: 0 5px;
+    margin: 0 7px;
     height: 40px;
     width: 40px;
+    cursor: pointer;
+    font-size: 20px;
 }
 
-.social-container a:hover {
-    border-color: var(--main-color);
+.social-container {
+    margin: 20px 0;
+    text-align: center;
 }
+
+.social-container .facebook:hover {
+    color: #4267B2;
+    border-color: #4267B2;
+}
+
+.social-container .google:hover {
+    color: #db4a39;
+    border-color: #db4a39;
+}
+
+.social-container .linkedin:hover {
+    color: #0e76a8;
+    border-color: #0e76a8;
+}
+
+
+
+/* .social-container a:hover {
+    border-color: var(--main-color);
+} */
 
 .form-container input {
-    background: #eee;
-    border: none;
-    padding: 12px 15px;
-    margin: 8px 0;
-    border-radius: 5px;
+    /* background: #eee; */
+    /* border: none; */
+    /* padding: 12px 15px; */
+    /* margin: 8px 0; */
+    /* border-radius: 5px; */
     width: 100%;
     font-size: 14px;
 }
@@ -88,22 +118,23 @@ a:hover {
 
 
 button {
-    border-radius: 20px;
-    border: 1px solid #38ef7d;
+    border-radius: 4px;
+    border: 1px solid var(--main-color);
     color: #fff;
     font-size: 12px;
     font-weight: bold;
-    padding: 12px 45px;
     letter-spacing: 1px;
     text-transform: uppercase;
-    transition: transform 40ms ease-in;
+    transition: transform 20ms ease-in;
     cursor: pointer;
     margin: 8px 0;
+    width: 100%;
 }
 
 button:active {
     transform: scale(0.95);
 }
+
 button:focus {
     outline: none;
 }
@@ -169,14 +200,28 @@ button.ghost {
     transition: transform 0.6s ease-in-out;
 }
 
+.overlay-panel button, .overlay-panel button {
+    color: #fff !important;
+    background-color: transparent !important;
+    border-color: #fff !important;
+}
+
 .overlay-right {
     right: 0;
     transform: translateX(0)
 }
 
+
 .overlay-left {
     transform: translateX(-20%)
 }
+
+.ant-form-item-control-input-content {
+    justify-content: space-between;
+    display: flex;
+    font-size: 14px;
+}
+
 
 /* Animations */
 /* move signin to the right */
@@ -209,3 +254,4 @@ button.ghost {
 .container.right-panel-active .overlay-right {
     transform: translateX(20%);
 }
+
