@@ -27,20 +27,30 @@ export default function SignUp() {
 
                 <div className="option-text">or use your email for registration</div>
 
-                <Form.Item>
+                <Form.Item
+                    hasFeedback
+                    name="firstName"
+                    rules={[{
+                        min: 2,
+                        message: 'Your first name must be at least 2 characters.'
+                    }]}>
                     <Input placeholder='First name' size="large" />
-
                 </Form.Item>
 
-                <Form.Item>
-                    <Input placeholder='Last name' size="large" />
+                <Form.Item
+                    hasFeedback
+                    name="lastName"
+                    rules={[{
+                        min: 2,
+                        message: 'Your last name must be at least 2 characters.'
+                    }]}>
 
+                    <Input placeholder='Last name' size="large" />
                 </Form.Item>
 
                 <Form.Item
                     name="email"
-                    place
-                    type="email"
+                    hasFeedback
                     rules={[
                         {
                             required: true,
@@ -76,16 +86,16 @@ export default function SignUp() {
                     hasFeedback
                     rules={[
                         {
-                        required: true,
-                        message: 'Please confirm your password!',
+                            required: true,
+                            message: 'Please confirm your password!',
                         },
                         ({ getFieldValue }) => ({
-                        validator(_, value) {
-                            if (!value || getFieldValue('password') === value) {
-                            return Promise.resolve();
-                            }
-                            return Promise.reject(new Error('The two passwords that you entered do not match!'));
-                        },
+                            validator(_, value) {
+                                if (!value || getFieldValue('password') === value) {
+                                    return Promise.resolve();
+                                }
+                                return Promise.reject(new Error('The two passwords that you entered do not match!'));
+                            },
                         }),
                     ]}
                 >

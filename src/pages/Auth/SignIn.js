@@ -31,8 +31,7 @@ export default function SignIn() {
 
                 <Form.Item
                     name="email"
-                    place
-                    type="email"
+                    hasFeedback
                     rules={[
                         {
                             required: true,
@@ -49,6 +48,7 @@ export default function SignIn() {
 
                 <Form.Item
                     name="password"
+                    hasFeedback
                     rules={[
                         {
                             required: true,
