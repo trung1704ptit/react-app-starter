@@ -2,6 +2,9 @@ import React from 'react';
 import { Form, Input, Button, Checkbox } from 'antd';
 import { LoginOutlined } from '@ant-design/icons';
 import SocialNetworks from './SocialNetworks';
+import { Typography } from 'antd';
+
+const { Title } = Typography;
 
 export default function SignIn() {
     const onFinish = (values) => {
@@ -15,7 +18,7 @@ export default function SignIn() {
     return (
         <>
             <Form
-                name="basic"
+                name="signin"
                 initialValues={{
                     remember: false,
                 }}
@@ -23,8 +26,7 @@ export default function SignIn() {
                 onFinishFailed={onFinishFailed}
                 autoComplete="off"
             >
-
-                <h1>Sign in</h1>
+                <Title level={2}>Sign in</Title>
                 <SocialNetworks />
 
                 <div className="option-text">or use your account</div>

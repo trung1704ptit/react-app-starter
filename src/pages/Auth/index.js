@@ -1,10 +1,14 @@
 import React, { useState } from 'react';
 import { Button } from 'antd';
 import { SelectOutlined } from '@ant-design/icons';
+import { Helmet } from "react-helmet";
+import { Typography } from 'antd';
 import SignIn from './SignIn';
 import SignUp from './SignUp';
 
 import './style.css';
+
+const { Title } = Typography;
 
 export default function Auth() {
     const [isPanelRightActive, setIsPanelRightActive] = useState(false);
@@ -18,8 +22,13 @@ export default function Auth() {
     }
 
     return (
-        <>
-            <div className={`container ${isPanelRightActive ? 'right-panel-active' : ''}`}>
+        <div className="auth-page">
+            <Helmet>
+                <title>Authentication</title>
+                <meta name="description" content="React App authentication" />
+            </Helmet>
+
+            <div className={`auth-container ${isPanelRightActive ? 'right-panel-active' : ''}`}>
                 <div className="form-container sign-up-container">
                     <SignUp />
                 </div>
@@ -32,7 +41,7 @@ export default function Auth() {
                         <div className="overlay-panel overlay-left bg-gradient">
                             <h1>Welcome!</h1>
                             <p>If you already have an account with us please log in at the login page</p>
-                            <Button shape="round" onClick={handleClickSignIn} icon={ <SelectOutlined />} size="large">
+                            <Button shape="round" onClick={handleClickSignIn} icon={<SelectOutlined />} size="large">
                                 Sign In
                             </Button>
                         </div>
@@ -46,6 +55,6 @@ export default function Auth() {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     )
 }

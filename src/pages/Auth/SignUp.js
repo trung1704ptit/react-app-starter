@@ -2,6 +2,9 @@ import React from 'react';
 import { Form, Input, Button } from 'antd';
 import { UserAddOutlined } from '@ant-design/icons';
 import SocialNetworks from './SocialNetworks';
+import { Typography } from 'antd';
+
+const { Title } = Typography;
 
 export default function SignUp() {
     const onFinish = (values) => {
@@ -15,14 +18,14 @@ export default function SignUp() {
     return (
         <>
             <Form
-                name="basic"
+                name="signup"
                 initialValues={{}}
                 onFinish={onFinish}
                 onFinishFailed={onFinishFailed}
                 autoComplete="off"
             >
 
-                <h1>Create Account</h1>
+                <Title level={2}>Create Account</Title>
                 <SocialNetworks />
 
                 <div className="option-text">or use your email for registration</div>
@@ -87,7 +90,7 @@ export default function SignUp() {
                     rules={[
                         {
                             required: true,
-                            message: 'Please confirm your password!',
+                            message: 'Please confirm your password.',
                         },
                         ({ getFieldValue }) => ({
                             validator(_, value) {
