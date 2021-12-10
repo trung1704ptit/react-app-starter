@@ -1,4 +1,4 @@
-import React, {useState } from 'react';
+import React, { useState } from 'react';
 import { Form, Input, Button, Checkbox } from 'antd';
 import { UserAddOutlined } from '@ant-design/icons';
 import SocialNetworks from './SocialNetworks';
@@ -7,16 +7,12 @@ import { Row, Col } from 'antd';
 const { Title } = Typography;
 
 export default function SignUp() {
-    const [form] = Form.useForm('');
-
     const onFinish = async (values) => {
         console.log('Success:', values);
     };
 
     const onCheckboxChange = e => {
         setChecked(e.target.checked);
-        form.setFieldsValue({ agree: e.target.checked })
-        form.validateFields(['agree']);
     };
 
     const [checked, setChecked] = useState(false);
@@ -26,7 +22,7 @@ export default function SignUp() {
     };
 
     const validation = (rule, value, callback) => {
-        if(checked) {
+        if (checked) {
             return callback()
         }
         return callback("Please agree Terms of Use & Privacy policy")
@@ -151,12 +147,12 @@ export default function SignUp() {
                 </Row>
 
                 <Form.Item>
-                    <Form.Item name="agree" valuePropName='checked' noStyle rules={[{validator: validation}]}>
+                    <Form.Item name="agree" valuePropName='checked' noStyle rules={[{ validator: validation }]}>
                         <Checkbox checked={checked} onChange={onCheckboxChange}>I agree to <a href="#">Terms of Use & Privacy policy</a>.</Checkbox>
                     </Form.Item>
                 </Form.Item>
 
-                <Button type="primary" htmlType="submit" shape="round" icon={<UserAddOutlined />} size="large">
+                <Button type="primary" className="form-submit-btn" htmlType="submit" shape="round" icon={<UserAddOutlined />} size="large">
                     Sign Up
                 </Button>
             </Form>
