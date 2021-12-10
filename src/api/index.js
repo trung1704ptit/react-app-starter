@@ -1,12 +1,13 @@
 import axios from 'axios';
 import queryString from 'qs';
 import get from 'lodash/get';
+import systemConfig from '../config'
 
 const request = axios.create();
 
-const api = (options = {}, authAPI) => {
+const api = (options = {}) => {
     let config = {
-        baseURL: '',
+        baseURL: systemConfig.endpoints.BACKEND_URL,
         ...options,
         paramsSerializer: (params) =>
             queryString.stringify(params, { arrayFormat: 'repeat' }),
@@ -34,8 +35,10 @@ request.interceptors.response.use(
         return response;
     },
     (error) => {
-        const errorCode = get(error, 'response.status');
-        // TODO
+        if (error.response && error.response.data) {
+            return Promise.reject(error.response.data);
+        }
+        return Promise.reject(error.message);
     }
 );
 

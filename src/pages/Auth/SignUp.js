@@ -2,20 +2,48 @@ import React, { useState } from 'react';
 import { Form, Input, Button, Checkbox } from 'antd';
 import { UserAddOutlined } from '@ant-design/icons';
 import SocialNetworks from './SocialNetworks';
-import { Typography } from 'antd';
+import { Typography, message } from 'antd';
 import { Row, Col } from 'antd';
+import SignUpSuccessModal from './SignUpSuccessModal';
+import api from '../../api';
+import { get } from 'lodash';
+
 const { Title } = Typography;
 
 export default function SignUp() {
+    const [checked, setChecked] = useState(false);
+    const [showModal, setShowModal] = useState(false);
+    const [form] = Form.useForm();
+
     const onFinish = async (values) => {
-        console.log('Success:', values);
+        try {
+            const payload = {
+                firstName: get(values, 'firstName'),
+                lastName: get(values, 'lastName'),
+                email: get(values, 'email'),
+                password: get(values, 'password'),
+            }
+
+            const res = await api({
+                url: '/users/signup',
+                data: payload,
+                method: 'POST'
+            });
+
+            if (res && res.status === 201) {
+                setShowModal(true);
+                form.resetFields()
+            }
+        } catch (error) {
+            const errorMessage = get(error, 'error.message', 'Something went wrong!')
+            message.error(errorMessage)
+        }
     };
 
     const onCheckboxChange = e => {
         setChecked(e.target.checked);
     };
 
-    const [checked, setChecked] = useState(false);
 
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
@@ -28,14 +56,23 @@ export default function SignUp() {
         return callback("Please agree Terms of Use & Privacy policy")
     };
 
+    const handleCloseModal = () => {
+        setShowModal(false)
+    }
+
     return (
         <>
+            {showModal && <SignUpSuccessModal
+                handleClose={handleCloseModal}
+            />}
+
             <Form
                 name="signup"
                 initialValues={{}}
                 onFinish={onFinish}
                 onFinishFailed={onFinishFailed}
                 autoComplete="off"
+                form={form}
             >
 
                 <Title level={2} className="text-center">Create Account</Title>
@@ -51,8 +88,13 @@ export default function SignUp() {
                             name="firstName"
                             label="First name"
                             labelCol={{ span: 24 }}
-                            wrapperCol={{ spane: 24 }}
-                            rules={[{
+                            wrapperCol={{ span: 24 }}
+                            rules={[
+                                {
+                                    required: true,
+                                    message: 'Please input your first name.',
+                                },
+                                {
                                 min: 2,
                                 message: 'Your first name must be at least 2 characters.'
                             }]}>
@@ -65,8 +107,13 @@ export default function SignUp() {
                             name="lastName"
                             label="Last name"
                             labelCol={{ span: 24 }}
-                            wrapperCol={{ spane: 24 }}
-                            rules={[{
+                            wrapperCol={{ span: 24 }}
+                            rules={[
+                                {
+                                    required: true,
+                                    message: 'Please input your last name.',
+                                },
+                                {
                                 min: 2,
                                 message: 'Your last name must be at least 2 characters.'
                             }]}>
@@ -82,7 +129,7 @@ export default function SignUp() {
                     name="email"
                     label="Email address"
                     labelCol={{ span: 24 }}
-                    wrapperCol={{ spane: 24 }}
+                    wrapperCol={{ span: 24 }}
                     hasFeedback
                     rules={[
                         {
@@ -104,7 +151,7 @@ export default function SignUp() {
                             name="password"
                             label="Password"
                             labelCol={{ span: 24 }}
-                            wrapperCol={{ spane: 24 }}
+                            wrapperCol={{ span: 24 }}
                             hasFeedback
                             rules={[
                                 {
@@ -123,7 +170,7 @@ export default function SignUp() {
                             name="confirm"
                             label="Confirm Password"
                             labelCol={{ span: 24 }}
-                            wrapperCol={{ spane: 24 }}
+                            wrapperCol={{ span: 24 }}
                             dependencies={['password']}
                             hasFeedback
                             rules={[
