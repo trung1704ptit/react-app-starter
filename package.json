@@ -14,11 +14,17 @@
     "craco-less": "^1.20.0",
     "env-cmd": "^10.1.0",
     "lodash": "^4.17.21",
+    "qs": "^6.10.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-helmet": "^6.1.0",
+    "react-redux": "^7.2.6",
     "react-responsive": "^9.0.0-beta.5",
+    "react-router-dom": "^6.0.2",
     "react-scripts": "4.0.3",
+    "redux": "^4.1.2",
+    "redux-persist": "^6.0.0",
+    "redux-thunk": "^2.4.1",
     "web-vitals": "^1.0.1"
   },
   "scripts": {
