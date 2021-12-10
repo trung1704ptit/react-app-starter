@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState } from 'react';
 import { Form, Input, Button, Checkbox } from 'antd';
 import { UserAddOutlined } from '@ant-design/icons';
 import SocialNetworks from './SocialNetworks';
@@ -7,12 +7,29 @@ import { Row, Col } from 'antd';
 const { Title } = Typography;
 
 export default function SignUp() {
-    const onFinish = (values) => {
+    const [form] = Form.useForm('');
+
+    const onFinish = async (values) => {
         console.log('Success:', values);
     };
 
+    const onCheckboxChange = e => {
+        setChecked(e.target.checked);
+        form.setFieldsValue({ agree: e.target.checked })
+        form.validateFields(['agree']);
+    };
+
+    const [checked, setChecked] = useState(false);
+
     const onFinishFailed = (errorInfo) => {
         console.log('Failed:', errorInfo);
+    };
+
+    const validation = (rule, value, callback) => {
+        if(checked) {
+            return callback()
+        }
+        return callback("Please agree Terms of Use & Privacy policy")
     };
 
     return (
@@ -116,7 +133,7 @@ export default function SignUp() {
                             rules={[
                                 {
                                     required: true,
-                                    message: 'Please confirm your password.',
+                                    message: 'Confirm your password.',
                                 },
                                 ({ getFieldValue }) => ({
                                     validator(_, value) {
@@ -134,8 +151,8 @@ export default function SignUp() {
                 </Row>
 
                 <Form.Item>
-                    <Form.Item name="agree" valuePropName="checked" noStyle>
-                        <Checkbox>I agree to <a href="#">Terms of Use & Privacy policy</a>.</Checkbox>
+                    <Form.Item name="agree" valuePropName='checked' noStyle rules={[{validator: validation}]}>
+                        <Checkbox checked={checked} onChange={onCheckboxChange}>I agree to <a href="#">Terms of Use & Privacy policy</a>.</Checkbox>
                     </Form.Item>
                 </Form.Item>
 
