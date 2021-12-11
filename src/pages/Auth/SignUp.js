@@ -13,6 +13,7 @@ const { Title } = Typography;
 export default function SignUp() {
     const [checked, setChecked] = useState(false);
     const [showModal, setShowModal] = useState(false);
+    const [loading, setLoading] = useState(false);
     const [form] = Form.useForm();
 
     const onFinish = async (values) => {
@@ -24,6 +25,8 @@ export default function SignUp() {
                 password: get(values, 'password'),
             }
 
+            setLoading(true)
+
             const res = await api({
                 url: '/users/signup',
                 data: payload,
@@ -33,10 +36,12 @@ export default function SignUp() {
             if (res && res.status === 201) {
                 setShowModal(true);
                 form.resetFields()
+                setLoading(false)
             }
         } catch (error) {
             const errorMessage = get(error, 'error.message', 'Something went wrong!')
             message.error(errorMessage)
+            setLoading(false)
         }
     };
 
@@ -195,11 +200,21 @@ export default function SignUp() {
 
                 <Form.Item>
                     <Form.Item name="agree" valuePropName='checked' noStyle rules={[{ validator: validation }]}>
-                        <Checkbox checked={checked} onChange={onCheckboxChange}>I agree to <a href="#">Terms of Use & Privacy policy</a>.</Checkbox>
+                        <Checkbox checked={checked} onChange={onCheckboxChange}>
+                            I agree to
+                            <a href="#">Terms of Use & Privacy policy</a>.
+                        </Checkbox>
                     </Form.Item>
                 </Form.Item>
 
-                <Button type="primary" className="form-submit-btn" htmlType="submit" shape="round" icon={<UserAddOutlined />} size="large">
+                <Button
+                    type="primary"
+                    loading={loading}
+                    className="form-submit-btn"
+                    htmlType="submit" shape="round"
+                    icon={<UserAddOutlined />}
+                    size="large"
+                >
                     Sign Up
                 </Button>
             </Form>

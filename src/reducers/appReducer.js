@@ -1,5 +1,3 @@
-import * as actions from './constants';
-
 const initialState = {
     products: {}
 };

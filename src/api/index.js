@@ -1,6 +1,7 @@
 import axios from 'axios';
 import queryString from 'qs';
-import get from 'lodash/get';
+// import get from 'lodash/get';
+import cookie from 'js-cookie'
 import systemConfig from '../config'
 
 const request = axios.create();
@@ -16,9 +17,9 @@ const api = (options = {}) => {
             ...options.headers,
         },
     };
-    // if (cookie.get(TOKEN) && cookie.get(REFRESH_TOKEN)) {
-    //   config.headers.Authorization = `Bearer ${cookie.get(TOKEN)}`;
-    // }
+    if (cookie.get('accessToken')) {
+      config.headers.Authorization = `Bearer ${cookie.get('accessToken')}`;
+    }
     return request(config);
 };
 

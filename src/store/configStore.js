@@ -7,7 +7,7 @@ import storage from 'redux-persist/lib/storage' // defaults to localStorage for 
 const persistConfig = {
     key: 'root',
     storage,
-    whitelist: ['user'] // only navigation will be persisted
+    whitelist: ['auth'] // only navigation will be persisted
 }
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
