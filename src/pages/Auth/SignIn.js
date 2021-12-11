@@ -7,7 +7,6 @@ import get from 'lodash/get';
 import { actionSignIn, actionSignInSuccess, actionSignInError } from './actions';
 import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate  } from "react-router-dom";
-import cookie from 'js-cookie';
 import api from '../../api';
 
 const { Title } = Typography;
@@ -37,7 +36,6 @@ export default function SignIn() {
                 const accessToken = res.headers.authorization;
                 const { user } = res.data
                 user.accessToken = accessToken
-                cookie.set('accessToken', accessToken)
                 // update user profile redux and perist
                 dispatch(actionSignInSuccess(user))
                 form.resetFields()
