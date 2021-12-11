@@ -1,7 +1,8 @@
 import {
     SIGN_IN,
     SIGN_IN_SUCCESS,
-    SIGN_IN_ERROR
+    SIGN_IN_ERROR,
+    SIGN_OUT
 } from './constants';
 
 const initialState = {
@@ -29,6 +30,12 @@ const system = (state = initialState, action) => {
                 ...state,
                 error: action.error,
                 loading: false,
+                profile: {}
+            }
+        case SIGN_OUT:
+            return {
+                loading: false,
+                error: {},
                 profile: {}
             }
         default:

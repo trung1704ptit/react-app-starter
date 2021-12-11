@@ -4,7 +4,8 @@ import {
     SIGN_IN_ERROR,
     FETCH_USER,
     FETCH_USER_SUCCESS,
-    FETCH_USER_ERROR
+    FETCH_USER_ERROR,
+    SIGN_OUT
 } from '../../reducers/constants'
 
 export const actionSignIn = () => dispatch => {
@@ -31,4 +32,8 @@ export const actionFetchUserProfileSuccess = payload => dispatch => {
 
 export const actionFetchUserProfileError = error => dispatch => {
     dispatch({ type: FETCH_USER_ERROR, error })
+}
+
+export const actionSignOut = error => dispatch => {
+    dispatch({ type: SIGN_OUT })
 }

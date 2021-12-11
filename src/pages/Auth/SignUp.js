@@ -37,6 +37,7 @@ export default function SignUp() {
                 setShowModal(true);
                 form.resetFields()
                 setLoading(false)
+                setChecked(false)
             }
         } catch (error) {
             const errorMessage = get(error, 'error.message', 'Something went wrong!')
@@ -201,8 +202,7 @@ export default function SignUp() {
                 <Form.Item>
                     <Form.Item name="agree" valuePropName='checked' noStyle rules={[{ validator: validation }]}>
                         <Checkbox checked={checked} onChange={onCheckboxChange}>
-                            I agree to
-                            <a href="#">Terms of Use & Privacy policy</a>.
+                            I agree to <a href="#">Terms of Use & Privacy policy</a>.
                         </Checkbox>
                     </Form.Item>
                 </Form.Item>
