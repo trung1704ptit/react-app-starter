@@ -80,9 +80,9 @@ export default function SignUp() {
         <Title level={2} className="text-center">
           Create Account
         </Title>
-        {/* <SocialNetworks /> */}
+        <SocialNetworks />
 
-        {/* <div className="option-text">or use your email for registration</div> */}
+        <div className="option-text">or use your email for registration</div>
 
         <Row gutter={{ xs: 8, sm: 16 }}>
           <Col className="gutter-row" xs={{ span: 24 }} md={{ span: 12 }}>

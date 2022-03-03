@@ -71,9 +71,9 @@ export default function SignIn() {
         <Title level={2} className="text-center">
           Sign in
         </Title>
-        {/* <SocialNetworks /> */}
+        <SocialNetworks />
 
-        {/* <div className="option-text">or use your account</div> */}
+        <div className="option-text">or use your account</div>
 
         <Form.Item
           name="email"
