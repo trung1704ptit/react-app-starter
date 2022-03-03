@@ -12,20 +12,25 @@ function SignUpSuccessModal(props) {
     }
 
     return (
-        <Modal visible={true} footer={null}  onCancel={props.handleClose}>
-            <Result
-                status="success"
-                title="Congratulations! Registration completed successfully!"
-                subTitle="Now you can sign in to our system."
-                extra={[
-                    <Button type="primary" shape="round" icon={<LoginOutlined />} key="console" onClick={handleRedirect}>
-                        Sign In now
-                    </Button>,
-                ]}
-            />
-        </Modal>
-
-    )
+      <Modal visible={true} footer={null} onCancel={props.handleClose}>
+        <Result
+          status="success"
+          title="Congratulations! Registration completed successfully!"
+          subTitle="Now you can sign in to our system."
+          extra={[
+            <Button
+              type="primary"
+              shape="round"
+              icon={<LoginOutlined />}
+              key="console"
+              onClick={handleRedirect}
+            >
+              Sign In now
+            </Button>,
+          ]}
+        />
+      </Modal>
+    );
 }
 
 export default React.memo(SignUpSuccessModal)
